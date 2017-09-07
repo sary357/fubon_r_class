@@ -24,6 +24,8 @@ head(tw711)
 ```{r tailTable, echo=FALSE}
 knitr::kable(head(tw711))
 ```
+echo(T/F): don't show code
+include(T/F): don't show the result
 ```{r testPlot, echo=FALSE}
 library(ggplot2)
 library(magrittr)
