@@ -1,0 +1,11 @@
+library(RSQLite)
+TAIFEX_DB_FILE = Sys.getenv(x = "DB_PATH", unset = "data/TRY.sqlite", names = NA)
+sqliteDrv <- dbDriver("SQLite")
+conn <- dbConnect(sqliteDrv,TAIFEX_DB_FILE)
+df = dbGetQuery(conn,"select datetime, id, bid_price, ask_price, price, volume from TXF_NEAR_MONTH_TICK")
+View(df)
+
+library(quantmod)
+Xt = xts(df[c("price","volume")],order.by = as.POSIXct(df$datetime))
+View(Xt)
+chartSeries(to.minutes(Xt))
