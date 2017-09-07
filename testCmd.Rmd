@@ -1,0 +1,31 @@
+---
+title: "testRcmd"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Just a simple test
+
+```{r headtable, include=FALSE}
+library(readr)
+tw711 <- read_csv("E:/Funon-DS-R-sary357/SampleCodes/Day2/tw711/711_stores_df.csv",col_types = cols(POIID = col_character()))
+```
+```{r datatable, echo=FALSE}
+head(tw711)
+```
+```{r tailTable, echo=FALSE}
+knitr::kable(head(tw711))
+```
+```{r testPlot, echo=FALSE}
+library(ggplot2)
+library(magrittr)
+tw711 %>% ggplot(mapping=aes(x=logitude, y=latitude, color=is7WiFi)) +geom_point()
+```
